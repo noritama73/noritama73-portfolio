@@ -1,9 +1,7 @@
-name: Build and Deploy
+name: Lint
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
 
 jobs:
   build:
@@ -19,10 +17,3 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Run Lint
         run: yarn lint
-      - name: Build
-        run: yarn build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
