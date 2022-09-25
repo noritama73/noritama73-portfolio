@@ -18,11 +18,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Node.js dependencies
         run: yarn --frozen-lockfile
+      - name: Run Lint
+        run: yarn lint
       - name: Build
         run: yarn build
-      - name: App Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          publish_branch: main
